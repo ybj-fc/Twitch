@@ -10,20 +10,103 @@
       padding: 0;
       height: 100%;
       background: #000;
+      font-family: Arial, sans-serif;
     }
+
+    /* Popup Overlay */
+    #popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .popup-box {
+      background: #111;
+      padding: 28px;
+      border-radius: 12px;
+      text-align: center;
+      color: #fff;
+      max-width: 320px;
+      width: 90%;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .popup-box h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .popup-box p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .tg-btn {
+      display: block;
+      margin-top: 20px;
+      padding: 12px;
+      background: #229ED9;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .watch-btn {
+      margin-top: 12px;
+      padding: 10px;
+      background: transparent;
+      border: 1px solid #666;
+      color: #aaa;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
     iframe {
       width: 100%;
       height: 100vh;
       border: 0;
+      display: none;
     }
   </style>
 </head>
 <body>
 
+<!-- POPUP -->
+<div id="popup">
+  <div class="popup-box">
+    <h2>📢 Join Our Telegram</h2>
+    <p>Live updates • Match links • Highlights</p>
+
+    <!-- TELEGRAM CHANNEL -->
+    <a class="tg-btn" href="https://t.me/ybj_fc" target="_blank">
+      🚀 Join Telegram
+    </a>
+
+    <button class="watch-btn" onclick="watchLive()">
+      Continue to Live Stream
+    </button>
+  </div>
+</div>
+
+<!-- TWITCH PLAYER -->
 <iframe
-  src="https://player.twitch.tv/?channel=yungtyyler&parent=ybj-fc.github.io"
+  id="player"
+  src="https://player.twitch.tv/?channel=yungtyyler&parent=ybj-fc.github.io&muted=true"
   allowfullscreen>
 </iframe>
+
+<script>
+  function watchLive() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("player").style.display = "block";
+  }
+</script>
 
 </body>
 </html>
